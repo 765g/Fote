@@ -1,0 +1,127 @@
+═══════════════════════════════════════════════════════════════════════
+                    🤖 FOTE - FREE AI CLI
+                   Chat con 27 modelos GRATIS
+═══════════════════════════════════════════════════════════════════════
+
+🚀 INSTALACIÓN DE UNA LÍNEA:
+
+WINDOWS (PowerShell):
+────────────────────────────────────────────────────────────────────
+curl -o "$env:USERPROFILE\fote.py" https://raw.githubusercontent.com/765g/Fote/master/fote.py; python "$env:USERPROFILE\fote.py" -s
+────────────────────────────────────────────────────────────────────
+
+LINUX / macOS:
+────────────────────────────────────────────────────────────────────
+curl -o ~/fote.py https://raw.githubusercontent.com/765g/Fote/master/fote.py && python3 ~/fote.py -s
+────────────────────────────────────────────────────────────────────
+
+¡Eso es TODO! Ya puedes chatear con IA desde tu terminal 🎉
+
+═══════════════════════════════════════════════════════════════════════
+
+📖 USO:
+
+Después de instalar, usa estos comandos:
+
+  fote -s              Seleccionar modelo y chatear
+  fote "tu pregunta"   Mensaje rápido
+  fote -i              Modo interactivo
+  fote -l              Ver todos los modelos
+  fote -h              Ayuda
+
+═══════════════════════════════════════════════════════════════════════
+
+🤖 MODELOS DISPONIBLES (27 modelos GRATIS):
+
+BEST (3 modelos)
+  • Nemotron Ultra 253B - El más poderoso
+  • Nemotron Super 49B - Super rápido
+  • Nemotron 70B - Balanceado
+
+REASONING (6 modelos)
+  • DeepSeek V4 Pro - Mejor para lógica
+  • DeepSeek V4 Flash - Rápido
+  • Qwen 397B - Modelo gigante
+  • Qwen 122B - Rápido y potente
+  • GLM 5.1 - Razonamiento
+  • MiniMax M3 - Lógica
+
+CODE (6 modelos)
+  • Codestral 22B - El mejor para código
+  • Granite Code 34B - Código empresarial
+  • Granite Code 8B - Rápido
+  • CodeGemma 7B - Google
+  • DeepSeek Coder - Especializado
+  • CodeLlama 70B - Meta
+
+GENERAL (12 modelos)
+  • Llama 3.3 70B - Conversaciones
+  • Llama 3.1 70B - General
+  • Llama 4 Maverick - Nuevo
+  • Mistral Large 3 675B - ENORME
+  • Mistral Large 2 - Balanceado
+  • Y 7 modelos más...
+
+═══════════════════════════════════════════════════════════════════════
+
+💡 CARACTERÍSTICAS:
+
+✓ 100% GRATIS - Sin tarjeta, sin límites
+✓ 27 MODELOS - Desde 8B hasta 675B parámetros
+✓ FÁCIL - Instalación de una línea
+✓ RÁPIDO - Respuestas en tiempo real
+✓ COMPLETO - Todos los comandos CLI
+✓ PORTABLE - Un solo archivo Python
+
+═══════════════════════════════════════════════════════════════════════
+
+📋 REQUISITOS:
+
+  • Python 3.8+ (https://python.org/downloads)
+  • Conexión a internet
+  • Terminal (PowerShell, Bash, etc.)
+
+═══════════════════════════════════════════════════════════════════════
+
+🆘 SI NO FUNCIONA:
+
+1. Instala Python: https://python.org/downloads
+2. Instala requests: pip install requests
+3. Corre el comando de nuevo
+
+═══════════════════════════════════════════════════════════════════════
+
+📦 REPOSITORIO:
+
+GitHub: https://github.com/765g/Fote
+Autor: 765g
+Versión: 1.0.0
+
+═══════════════════════════════════════════════════════════════════════
+
+🎯 EJEMPLO DE USO:
+
+C:\> python fote.py -s
+
+   [Aparece menú para seleccionar modelo]
+   
+   Select model number: 1
+
+   [Comienza chat interactivo]
+   
+   You: explica machine learning
+   AI: [Respuesta detallada...]
+   
+   You: /exit
+
+═══════════════════════════════════════════════════════════════════════
+
+COMPARTE ESTE COMANDO CON TODOS! 🚀
+
+Windows:
+curl -o "$env:USERPROFILE\fote.py" https://raw.githubusercontent.com/765g/Fote/master/fote.py; python "$env:USERPROFILE\fote.py" -s
+
+Linux/macOS:
+curl -o ~/fote.py https://raw.githubusercontent.com/765g/Fote/master/fote.py && python3 ~/fote.py -s
+
+═══════════════════════════════════════════════════════════════════════
