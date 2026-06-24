@@ -11,7 +11,7 @@ echo.
 
 REM Install required Python package
 echo [1/3] Installing dependencies...
-pip install requests --quiet
+pip install requests prompt-toolkit --quiet
 if %ERRORLEVEL% NEQ 0 (
     echo ERROR: Failed to install dependencies
     pause
