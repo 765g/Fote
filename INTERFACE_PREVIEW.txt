@@ -1,0 +1,239 @@
+═══════════════════════════════════════════════════════════════════════
+                    FOTE CLI INTERFACE PREVIEW
+═══════════════════════════════════════════════════════════════════════
+
+1. QUICK MESSAGE MODE
+═══════════════════════════════════════════════════════════════════════
+
+C:\> fote "what is artificial intelligence?"
+
+╔═══════════════════════════════════════════════════════════════════════╗
+║                                                                       ║
+║   ███████╗ ██████╗ ████████╗███████╗                                  ║
+║   ██╔════╝██╔═══██╗╚══██╔══╝██╔════╝                                  ║
+║   █████╗  ██║   ██║   ██║   █████╗                                    ║
+║   ██╔══╝  ██║   ██║   ██║   ██╔══╝                                    ║
+║   ██║     ╚██████╔╝   ██║   ███████╗                                  ║
+║   ╚═╝      ╚═════╝    ╚═╝   ╚══════╝                                  ║
+║                                                                       ║
+║   Free AI Agent in Your Terminal                                    ║
+║   Powered by NVIDIA NIM API                                         ║
+║                                                                       ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+┌─ Session Info ─────────────────────────────────────────────────────┐
+│  User: Administrator                            │
+│  Model: Nemotron 3 Ultra 550B                   │
+│  Status: ● Online                                        │
+└────────────────────────────────────────────────────────────────────┘
+
+┌─[C:\Users\Administrator\Desktop\RIVALS\Fote]
+└─> Administrator: what is artificial intelligence?
+
+┌─[Nemotron 3 Ultra 550B · NVIDIA]
+└─> Artificial Intelligence (AI) refers to the simulation of human 
+    intelligence in machines that are programmed to think and learn. 
+    AI systems can perform tasks that typically require human 
+    intelligence, such as visual perception, speech recognition, 
+    decision-making, and language translation...
+
+
+═══════════════════════════════════════════════════════════════════════
+
+2. MODEL LISTING
+═══════════════════════════════════════════════════════════════════════
+
+C:\> fote -l
+
+╔═══════════════════════════════════════════════════════════════════════╗
+║  🤖 Available Models                                              ║
+╠═══════════════════════════════════════════════════════════════════════╣
+║  ▸ Best                                                           ║
+║    nemotron-ultra                     Nemotron 3 Ultra 550B (NVIDIA) ║
+║    nemotron-super                        Nemotron Super 49B (NVIDIA) ║
+║    mistral-large-3                    Mistral Large 3 675B (Mistral) ║
+║                                                                       ║
+║  ▸ Reasoning                                                      ║
+║    deepseek-v4                            DeepSeek V4 Pro (DeepSeek) ║
+║    deepseek-flash                       DeepSeek V4 Flash (DeepSeek) ║
+║    qwen-397b                                 Qwen 3.5 397B (Alibaba) ║
+║    glm-5                                              GLM 5.1 (Z.ai) ║
+║    minimax                                      MiniMax M3 (MiniMax) ║
+║                                                                       ║
+║  ▸ Code                                                           ║
+║    codestral                                 Codestral 22B (Mistral) ║
+║    granite-code                               Granite Code 34B (IBM) ║
+║    codegemma                                   CodeGemma 7B (Google) ║
+║    deepseek-coder                     DeepSeek Coder 6.7B (DeepSeek) ║
+║                                                                       ║
+║  ▸ General                                                        ║
+║    llama-3.3-70b                                Llama 3.3 70B (Meta) ║
+║    llama-3.1-70b                                Llama 3.1 70B (Meta) ║
+║    llama-4-maverick                      Llama 4 Maverick 17B (Meta) ║
+║    mistral-medium                      Mistral Medium 128B (Mistral) ║
+║    qwen-122b                                 Qwen 3.5 122B (Alibaba) ║
+║    gemma-4-31b                                  Gemma 4 31B (Google) ║
+║    phi-4                                      Phi-4 Mini (Microsoft) ║
+║    gpt-oss-120b                                GPT-OSS 120B (OpenAI) ║
+║    yi-large                                         Yi Large (01.AI) ║
+║                                                                       ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+
+═══════════════════════════════════════════════════════════════════════
+
+3. INTERACTIVE MODE
+═══════════════════════════════════════════════════════════════════════
+
+C:\> fote -i
+
+╔═══════════════════════════════════════════════════════════════════════╗
+║                                                                       ║
+║   ███████╗ ██████╗ ████████╗███████╗                                  ║
+║   ██╔════╝██╔═══██╗╚══██╔══╝██╔════╝                                  ║
+║   █████╗  ██║   ██║   ██║   █████╗                                    ║
+║   ██╔══╝  ██║   ██║   ██║   ██╔══╝                                    ║
+║   ██║     ╚██████╔╝   ██║   ███████╗                                  ║
+║   ╚═╝      ╚═════╝    ╚═╝   ╚══════╝                                  ║
+║                                                                       ║
+║   Free AI Agent in Your Terminal                                    ║
+║   Powered by NVIDIA NIM API                                         ║
+║                                                                       ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+┌─ Session Info ─────────────────────────────────────────────────────┐
+│  User: Administrator                            │
+│  Model: Nemotron 3 Ultra 550B                   │
+│  Status: ● Online                                        │
+└────────────────────────────────────────────────────────────────────┘
+
+  Type your message or use commands:
+  • /help     - Show all commands
+  • /models   - List available models
+  • /model    - Switch model
+  • /clear    - Clear conversation
+  • /exit     - Quit Fote
+
+┌─[C:\Users\Administrator\Desktop\RIVALS\Fote]
+└─> Administrator: explain machine learning
+
+┌─[Nemotron 3 Ultra 550B · NVIDIA]
+└─> Machine learning is a subset of artificial intelligence that 
+    enables computers to learn from data without being explicitly 
+    programmed...
+
+┌─[C:\Users\Administrator\Desktop\RIVALS\Fote]
+└─> Administrator: /model codestral
+
+┌─[✓]
+└─> Model changed to: Codestral 22B
+
+┌─[C:\Users\Administrator\Desktop\RIVALS\Fote]
+└─> Administrator: write a python function
+
+┌─[Codestral 22B · Mistral]
+└─> def example_function(param1, param2):
+        """
+        This is an example function.
+        """
+        result = param1 + param2
+        return result
+
+┌─[C:\Users\Administrator\Desktop\RIVALS\Fote]
+└─> Administrator: /clear
+
+┌─[✓]
+└─> Conversation cleared
+
+┌─[C:\Users\Administrator\Desktop\RIVALS\Fote]
+└─> Administrator: /exit
+
+╔═══════════════════════════════════════╗
+║  ✓ Session ended successfully      ║
+║  Thank you for using Fote!       ║
+╚═══════════════════════════════════════╝
+
+
+═══════════════════════════════════════════════════════════════════════
+
+4. HELP DISPLAY
+═══════════════════════════════════════════════════════════════════════
+
+C:\> fote -h
+
+╔═══════════════════════════════════════════════════════════════════════╗
+║  📖 Fote Help & Commands                                           ║
+╠═══════════════════════════════════════════════════════════════════════╣
+║  ▸ CLI Usage                                                         ║
+║    fote "your message"              Quick single message         ║
+║    fote -m model "message"          Use specific model           ║
+║    fote -i                          Interactive mode             ║
+║    fote -l                          List all models              ║
+║    fote -h                          Show this help               ║
+║                                                                       ║
+║  ▸ Interactive Commands                                              ║
+║    /model <name>                   Change model                 ║
+║    /models                          List all models              ║
+║    /clear                           Clear conversation           ║
+║    /system <prompt>                 Set system prompt            ║
+║    /exit                            Exit chat                    ║
+║    /help                            Show help                    ║
+║                                                                       ║
+║  ▸ Examples                                                          ║
+║    fote "explain quantum computing"                            ║
+║    fote -m llama "write python code for sorting"              ║
+║    fote -m deepseek-v4 "debug this code"                      ║
+║    fote -i                                                               ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+
+═══════════════════════════════════════════════════════════════════════
+
+5. ERROR DISPLAY
+═══════════════════════════════════════════════════════════════════════
+
+C:\> fote -m invalid-model "test"
+
+┌─[✗ Error]
+└─> Model 'invalid-model' not found
+    Use 'fote -l' to see available models
+
+
+═══════════════════════════════════════════════════════════════════════
+
+COLOR SCHEME:
+═══════════════════════════════════════════════════════════════════════
+
+CYAN    - User input, commands, highlights
+GREEN   - AI responses, success messages
+YELLOW  - Model names, warnings
+GRAY    - Borders, metadata, timestamps
+RED     - Errors, warnings
+PURPLE  - Special elements, best models
+
+
+═══════════════════════════════════════════════════════════════════════
+
+FEATURES:
+═══════════════════════════════════════════════════════════════════════
+
+✓ Professional ASCII banner
+✓ Clean bordered boxes
+✓ Color-coded interface
+✓ Status indicators (● Online)
+✓ Directory path display
+✓ Model and provider info
+✓ Success/error formatting
+✓ Streaming responses
+✓ Interactive commands
+✓ Conversation memory
+
+
+═══════════════════════════════════════════════════════════════════════
+
+This is what makes Fote special - a beautiful, professional terminal
+interface that rivals commercial CLI tools, completely free!
+
+Author: 765g
+Version: 1.0.0
+═══════════════════════════════════════════════════════════════════════

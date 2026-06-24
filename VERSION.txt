@@ -1,0 +1,67 @@
+Fote - Free AI Chat in Terminal
+Version: 1.0.0
+Author: 765g
+Date: 2026-06-23
+
+CHANGELOG:
+
+v1.0.0 (2026-06-23)
+- Initial release
+- 25+ AI models from NVIDIA NIM API
+- Interactive chat mode with conversation memory
+- Professional terminal UI with colors and borders
+- Streaming responses for real-time output
+- Model switching (/model command)
+- Conversation clearing (/clear command)
+- Custom system prompts (/system command)
+- Quick message mode for one-shot queries
+- Model listing (-l flag)
+- Help system (-h flag)
+- PowerShell integration
+- Auto-installer (INSTALL.bat)
+
+FEATURES:
+✓ 100% Free (no credit card required)
+✓ 25+ models (6.7B to 675B parameters)
+✓ Interactive & quick message modes
+✓ Beautiful CLI interface
+✓ Streaming responses
+✓ Model switching
+✓ Conversation history
+✓ Custom system prompts
+✓ Windows support
+✓ Easy installation
+
+MODELS INCLUDED:
+- Best: Nemotron Ultra 550B, Nemotron Super 49B, Mistral Large 3 675B
+- Reasoning: DeepSeek V4, Qwen 397B, GLM 5.1, MiniMax M3
+- Code: Codestral 22B, Granite Code 34B, CodeGemma 7B, DeepSeek Coder
+- General: Llama 3.3 70B, Llama 4 Maverick, Mistral Medium, Phi-4, GPT-OSS
+
+REQUIREMENTS:
+- Python 3.8+
+- requests library (auto-installed)
+- Internet connection
+- Windows (tested), Linux/macOS (should work)
+
+API:
+- NVIDIA NIM API (integrate.api.nvidia.com)
+- No authentication required for user
+- API key embedded in code
+- Free tier with no rate limits
+
+FILES:
+- fote.py (Main script)
+- fote.ps1 (PowerShell wrapper)
+- INSTALL.bat (Installer)
+- README.md (Documentation)
+- EXAMPLES.md (Usage examples)
+- VERSION.txt (This file)
+- test_api.py (API tester)
+
+CONTACT:
+- Author: 765g
+- GitHub: github.com/765g
+
+LICENSE:
+Free to use for personal, educational, and commercial purposes.

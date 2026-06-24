@@ -1,0 +1,163 @@
+═══════════════════════════════════════════════════════════════════════
+                         FOTE CHEATSHEET
+                    Quick Reference Card v1.0.0
+═══════════════════════════════════════════════════════════════════════
+
+INSTALLATION
+═══════════════════════════════════════════════════════════════════════
+cd C:\Users\Administrator\Desktop\RIVALS\Fote
+INSTALL.bat
+[Restart terminal]
+
+BASIC USAGE
+═══════════════════════════════════════════════════════════════════════
+fote "your question"               Quick message
+fote -i                            Interactive mode (best)
+fote -l                            List all models
+fote -h                            Help
+
+WITH MODELS
+═══════════════════════════════════════════════════════════════════════
+fote -m nemotron-ultra "question"  Use best model (550B)
+fote -m deepseek-v4 "question"     Use reasoning model
+fote -m codestral "write code"     Use code model
+fote -m llama-3.3-70b "question"   Use fast model
+
+INTERACTIVE COMMANDS
+═══════════════════════════════════════════════════════════════════════
+/model <name>                      Change model
+/models                            List all models
+/clear                             Clear conversation
+/system <prompt>                   Set system prompt
+/help                              Show help
+/exit                              Quit
+
+TOP 5 MODELS
+═══════════════════════════════════════════════════════════════════════
+nemotron-ultra        Best overall (550B params)
+deepseek-v4           Best reasoning
+codestral             Best for code
+llama-3.3-70b         Fast & balanced
+mistral-large-3       Huge model (675B)
+
+MODEL CATEGORIES
+═══════════════════════════════════════════════════════════════════════
+BEST (3 models)
+  nemotron-ultra, nemotron-super, mistral-large-3
+
+REASONING (5 models)
+  deepseek-v4, deepseek-flash, qwen-397b, glm-5, minimax
+
+CODE (4 models)
+  codestral, granite-code, codegemma, deepseek-coder
+
+GENERAL (9 models)
+  llama-3.3-70b, llama-3.1-70b, llama-4-maverick, mistral-medium,
+  qwen-122b, gemma-4-31b, phi-4, gpt-oss-120b, yi-large
+
+COMMON TASKS
+═══════════════════════════════════════════════════════════════════════
+Ask question:        fote "what is AI?"
+Write code:          fote -m codestral "write python function"
+Debug code:          fote -m deepseek-v4 "fix this error: ..."
+Learn topic:         fote -m nemotron-ultra "explain quantum physics"
+Quick answer:        fote -m llama-4-maverick "quick question"
+
+INTERACTIVE WORKFLOW
+═══════════════════════════════════════════════════════════════════════
+fote -i                         Start interactive
+/model codestral                Switch to code model
+[Ask coding questions]          Chat normally
+/model deepseek-v4              Switch to reasoning
+[Ask logic questions]           Chat continues
+/clear                          Clear history
+/exit                           Quit
+
+TIPS & TRICKS
+═══════════════════════════════════════════════════════════════════════
+• Use interactive mode (-i) for conversations
+• Try different models for same question
+• Use code models for programming tasks
+• Use reasoning models for math/logic
+• Switch models mid-conversation with /model
+• Clear history with /clear to start fresh
+• Set custom personality with /system
+
+COLOR SCHEME
+═══════════════════════════════════════════════════════════════════════
+Cyan    = User input, commands
+Green   = AI responses, success
+Yellow  = Highlights, model names
+Gray    = Borders, metadata
+Red     = Errors
+Purple  = Special elements
+
+FILES
+═══════════════════════════════════════════════════════════════════════
+fote.py              Main application
+INSTALL.bat          Installer
+README.md            Full documentation
+EXAMPLES.md          Usage examples
+QUICK_START.md       30-second guide
+LEEME.md             Español
+CHEATSHEET.txt       This file
+
+TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════════════
+Command not found:      Restart terminal
+Python not found:       Install Python 3.8+
+Module error:           pip install requests
+API error:              Check internet connection
+Model not found:        Use 'fote -l' to see models
+
+QUICK EXAMPLES
+═══════════════════════════════════════════════════════════════════════
+fote "hello"
+fote "explain machine learning"
+fote -m codestral "write a REST API"
+fote -m deepseek-v4 "solve x^2 + 5x + 6 = 0"
+fote -m llama-3.3-70b "tell me a joke"
+fote -i
+
+KEYBOARD SHORTCUTS
+═══════════════════════════════════════════════════════════════════════
+Ctrl+C              Interrupt / Exit
+Up Arrow            Previous command (terminal)
+Tab                 Autocomplete (terminal)
+
+API INFO
+═══════════════════════════════════════════════════════════════════════
+Provider:           NVIDIA NIM API
+Endpoint:           integrate.api.nvidia.com
+Cost:               100% Free
+Limits:             None
+Models Available:   121 total, 25 curated
+Streaming:          Yes
+Auth:               Bearer token (embedded)
+
+VERSION INFO
+═══════════════════════════════════════════════════════════════════════
+Version:            1.0.0
+Author:             765g
+Date:               2026-06-23
+License:            Free for all uses
+Status:             Production ready
+
+SUPPORT
+═══════════════════════════════════════════════════════════════════════
+Documentation:      README.md
+Examples:           EXAMPLES.md
+Quick Start:        QUICK_START.md
+Test API:           python test_api.py
+Help:               fote -h
+GitHub:             github.com/765g
+
+═══════════════════════════════════════════════════════════════════════
+                    QUICK START IN 3 STEPS
+═══════════════════════════════════════════════════════════════════════
+1. Run: INSTALL.bat
+2. Restart terminal
+3. Type: fote -i
+
+DONE! Start chatting! 🚀
+═══════════════════════════════════════════════════════════════════════
