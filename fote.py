@@ -278,10 +278,10 @@ class NvidiaChat:
                 print()  # New line after stream
                 self.conversation.append({"role": "assistant", "content": full_response})
             else:
-                print("\033[31m[No response received]\033[0m")
+                print("[No response received]")
             return full_response
         except Exception as e:
-            print(f"\033[31m[Stream error: {str(e)}]\033[0m")
+            print(f"[Stream error: {str(e)}]")
             return ""
     
     def clear_conversation(self):
@@ -289,10 +289,8 @@ class NvidiaChat:
         self.conversation = []
     
     def list_models(self):
-        """List all available models"""
-        print("\n\033[90m╔═══════════════════════════════════════════════════════════════════════╗\033[0m")
-        print("\033[90m║\033[0m  \033[36m🤖 Available Models\033[0m" + " " * 46 + "\033[90m║\033[0m")
-        print("\033[90m╠═══════════════════════════════════════════════════════════════════════╣\033[0m")
+        """List all available models - simple format"""
+        print("\nAvailable models:\n")
         
         categories = {"Best": [], "Reasoning": [], "Code": [], "General": []}
         for key, info in MODELS.items():
@@ -301,164 +299,64 @@ class NvidiaChat:
         for category, models in categories.items():
             if not models:
                 continue
-                
-            category_color = {
-                "Best": "\033[35m",
-                "Reasoning": "\033[33m",
-                "Code": "\033[32m",
-                "General": "\033[36m"
-            }.get(category, "\033[37m")
-            
-            print(f"\033[90m║\033[0m  {category_color}▸ {category}\033[0m" + " " * (63 - len(category)) + "\033[90m║\033[0m")
-            
+            print(f"{category}:")
             for key, info in models:
-                name_display = f"{key}"
-                full_name = f"{info['name']} ({info['provider']})"
-                spacing = 65 - len(name_display) - len(full_name)
-                print(f"\033[90m║\033[0m    \033[36m{name_display}\033[0m{' ' * spacing}{full_name} \033[90m║\033[0m")
-            
-            print("\033[90m║\033[0m" + " " * 71 + "\033[90m║\033[0m")
-        
-        print("\033[90m╚═══════════════════════════════════════════════════════════════════════╝\033[0m")
-        print()
+                print(f"  {key:<25} {info['name']} ({info['provider']})")
+            print()
 
 
-def print_banner(model_name=None, username=None, show_instructions=True):
-    """Print CLI banner"""
-    import getpass
-    if username is None:
-        username = getpass.getuser()
+def print_banner(model_name=None, username=None, show_instructions=False):
+    """Print minimal CLI banner like FreeBuff"""
+    import os
     
-    banner = f"""
-\033[35m╔═══════════════════════════════════════════════════════════════════════╗
-║                                                                       ║
-║   \033[31m███████╗ ██████╗ ████████╗███████╗\033[35m                                  ║
-║   \033[31m██╔════╝██╔═══██╗╚══██╔══╝██╔════╝\033[35m                                  ║
-║   \033[31m█████╗  ██║   ██║   ██║   █████╗\033[35m                                    ║
-║   \033[31m██╔══╝  ██║   ██║   ██║   ██╔══╝\033[35m                                    ║
-║   \033[31m██║     ╚██████╔╝   ██║   ███████╗\033[35m                                  ║
-║   \033[31m╚═╝      ╚═════╝    ╚═╝   ╚══════╝\033[35m                                  ║
-║                                                                       ║
-║   \033[90mFree AI Agent in Your Terminal\033[35m                                    ║
-║   \033[90mPowered by NVIDIA NIM API\033[35m                                         ║
-║                                                                       ║
-╚═══════════════════════════════════════════════════════════════════════╝\033[0m
-"""
+    # Clear screen
+    os.system('cls' if os.name == 'nt' else 'clear')
     
-    print(banner)
-    
-    if model_name and username:
-        print(f"\033[90m┌─ Session Info ─────────────────────────────────────────────────────┐\033[0m")
-        print(f"\033[90m│\033[0m  \033[36mUser:\033[0m {username:<40} \033[90m│\033[0m")
-        print(f"\033[90m│\033[0m  \033[32mModel:\033[0m {model_name:<39} \033[90m│\033[0m")
-        print(f"\033[90m│\033[0m  \033[33mStatus:\033[0m \033[32m●\033[0m Online{' ' * 39} \033[90m│\033[0m")
-        print(f"\033[90m└────────────────────────────────────────────────────────────────────┘\033[0m")
-        print()
-    
-    if show_instructions:
-        print("\033[90m  Commands: /help /models /model /clear /history /save /status\033[0m")
-        print("\033[90m            /system /version /reload /exit\033[0m")
-        print()
-
-
-def print_help():
-    """Print help message"""
-    print("\n\033[90m╔═══════════════════════════════════════════════════════════════════════╗\033[0m")
-    print("\033[90m║\033[0m  \033[36m📖 Fote Help & Commands\033[0m" + " " * 43 + "\033[90m║\033[0m")
-    print("\033[90m╠═══════════════════════════════════════════════════════════════════════╣\033[0m")
-    print("\033[90m║\033[0m  \033[33m▸ CLI Usage\033[0m" + " " * 57 + "\033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36mfote \"your message\"\033[0m              Quick single message         \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36mfote -m model \"message\"\033[0m          Use specific model           \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36mfote -i\033[0m                          Interactive mode             \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36mfote -s\033[0m                          Select model & chat          \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36mfote -l\033[0m                          List all models              \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36mfote -h\033[0m                          Show this help               \033[90m║\033[0m")
-    print("\033[90m║\033[0m" + " " * 71 + "\033[90m║\033[0m")
-    print("\033[90m║\033[0m  \033[33m▸ Interactive Commands\033[0m" + " " * 46 + "\033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36m/model, /m, /use <name>\033[0m          Change model                 \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36m/models, /list, /ls\033[0m              List all models              \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36m/clear, /cls, /reset\033[0m             Clear conversation           \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36m/system, /sys <prompt>\033[0m           Set system prompt            \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36m/history, /hist\033[0m                  Show message history         \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36m/save, /export [file]\033[0m            Save conversation            \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36m/status, /stat\033[0m                   Show current status          \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36m/version, /v, /info\033[0m              Show version info            \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36m/reload, /refresh\033[0m                Refresh screen               \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36m/help, /h, /?\033[0m                    Show help                    \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[36m/exit, /quit, /q\033[0m                 Exit chat                    \033[90m║\033[0m")
-    print("\033[90m║\033[0m" + " " * 71 + "\033[90m║\033[0m")
-    print("\033[90m║\033[0m  \033[33m▸ Examples\033[0m" + " " * 58 + "\033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[90mfote \"explain quantum computing\"\033[0m                            \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[90mfote -m codestral \"write python code\"\033[0m                      \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[90mfote -s\033[0m                       \033[90m(select model interactively)\033[0m \033[90m║\033[0m")
-    print("\033[90m║\033[0m    \033[90mfote -i\033[0m" + " " * 63 + "\033[90m║\033[0m")
-    print("\033[90m╚═══════════════════════════════════════════════════════════════════════╝\033[0m")
+    # Super simple banner - just the name and one line
+    print("\033[32mFote\033[0m - Free AI in terminal")
+    if model_name:
+        print(f"Model: {model_name}")
     print()
 
 
-def get_user_input(username, cwd):
-    """Get user input with optional prompt_toolkit"""
-    if PROMPT_TOOLKIT_AVAILABLE:
-        # Simple clean input bar
-        style = Style.from_dict({
-            'prompt': '#00ff00',  # Green
-        })
-        
-        try:
-            return pt_prompt(
-                HTML(f'<prompt>{username}:</prompt> '),
-                style=style,
-                multiline=False
-            ).strip()
-        except (EOFError, KeyboardInterrupt):
-            return None
-    else:
-        # Fallback to regular input
-        return input(f"\033[32m{username}:\033[0m ").strip()
+def print_help():
+    """Print simple help"""
+    print("\nFote - Free AI in terminal\n")
+    print("Usage:")
+    print("  fote \"message\"          - Quick chat")
+    print("  fote -i                 - Interactive mode")
+    print("  fote -s                 - Select model")
+    print("  fote -l                 - List models")
+    print("  fote -m <model> \"msg\"   - Use specific model")
+    print("\nCommands:")
+    print("  /model <name>  - Change model")
+    print("  /models        - List models")
+    print("  /clear         - Clear chat")
+    print("  /save [file]   - Save conversation")
+    print("  /help          - Show help")
+    print("  /exit          - Quit")
+    print()
 
 
 def interactive_mode(chat):
-    """Run interactive chat mode"""
-    import getpass
+    """Run interactive chat mode - minimal like FreeBuff"""
     import os
     
-    username = getpass.getuser()
     model_name = MODELS[chat.model]['name']
     
-    # Clear screen (Windows/Linux compatible)
-    os.system('cls' if os.name == 'nt' else 'clear')
+    # Print minimal banner
+    print_banner(model_name)
     
-    # Print banner
-    print_banner(model_name, username, show_instructions=True)
-    
-    # Show prompt_toolkit status
-    if not PROMPT_TOOLKIT_AVAILABLE:
-        print("\033[33m💡 Tip: Install 'prompt-toolkit' for a better input experience:\033[0m")
-        print("\033[33m   pip install prompt-toolkit\033[0m\n")
-    
-    # Conversation history (for save/export)
     conversation_log = []
     
     while True:
         try:
-            # Get current directory for prompt
-            cwd = os.getcwd()
-            
-            # Get user input
-            user_input = get_user_input(username, cwd)
-            
-            # Handle Ctrl+C or Ctrl+D
-            if user_input is None:
-                print("\n\n\033[90m╔═══════════════════════════════════════╗\033[0m")
-                print("\033[90m║\033[0m  \033[33m⚠\033[0m  Interrupted by user          \033[90m║\033[0m")
-                print("\033[90m║\033[0m  \033[90mSession terminated\033[0m               \033[90m║\033[0m")
-                print("\033[90m╚═══════════════════════════════════════╝\033[0m\n")
-                break
+            # Super simple prompt - just >
+            user_input = input("> ").strip()
             
             if not user_input:
                 continue
             
-            # Log user input
             conversation_log.append({"role": "user", "content": user_input, "timestamp": datetime.now().isoformat()})
             
             # Handle commands
@@ -466,159 +364,76 @@ def interactive_mode(chat):
                 cmd_parts = user_input.split(maxsplit=1)
                 cmd = cmd_parts[0].lower()
                 
-                # EXIT/QUIT
-                if cmd == "/exit" or cmd == "/quit" or cmd == "/q":
-                    print("\n\033[90m╔═══════════════════════════════════════╗\033[0m")
-                    print("\033[90m║\033[0m  \033[32m✓\033[0m Session ended successfully      \033[90m║\033[0m")
-                    print("\033[90m║\033[0m  \033[90mThank you for using Fote!\033[0m       \033[90m║\033[0m")
-                    print("\033[90m╚═══════════════════════════════════════╝\033[0m\n")
+                if cmd in ["/exit", "/quit", "/q"]:
+                    print("Bye!")
                     break
                 
-                # HELP
-                elif cmd == "/help" or cmd == "/h" or cmd == "/?":
-                    print_help()
+                elif cmd in ["/help", "/h", "/?"]:
+                    print("\nCommands:")
+                    print("  /model <name>  - Change model")
+                    print("  /models        - List models")
+                    print("  /clear         - Clear chat")
+                    print("  /save [file]   - Save conversation")
+                    print("  /exit          - Quit\n")
                     continue
                 
-                # LIST MODELS
-                elif cmd == "/models" or cmd == "/list" or cmd == "/ls":
-                    chat.list_models()
+                elif cmd in ["/models", "/list", "/ls"]:
+                    print("\nModels:")
+                    for key, info in MODELS.items():
+                        print(f"  {key:<20} {info['name']}")
+                    print()
                     continue
                 
-                # CLEAR CONVERSATION
-                elif cmd == "/clear" or cmd == "/cls" or cmd == "/reset":
+                elif cmd in ["/clear", "/cls", "/reset"]:
                     chat.clear_conversation()
                     conversation_log = []
-                    # Clear screen
                     os.system('cls' if os.name == 'nt' else 'clear')
-                    print_banner(MODELS[chat.model]['name'], username, show_instructions=True)
-                    print("\n\033[90m┌─[\033[32m✓\033[90m]\033[0m")
-                    print("\033[90m└─>\033[0m \033[90mConversation cleared\033[0m")
+                    print_banner(MODELS[chat.model]['name'])
                     continue
                 
-                # CHANGE MODEL
-                elif cmd == "/model" or cmd == "/m" or cmd == "/use":
+                elif cmd in ["/model", "/m", "/use"]:
                     if len(cmd_parts) < 2:
-                        print("\n\033[90m┌─[\033[31m✗\033[90m]\033[0m")
-                        print("\033[90m└─>\033[0m \033[31mUsage: /model <model_name>\033[0m")
-                        print("\033[90m    Try: /models to see available options\033[0m")
+                        print("Usage: /model <name>\n")
                         continue
                     model_key = cmd_parts[1]
                     if chat.set_model(model_key):
-                        new_model_name = MODELS[model_key]['name']
-                        print(f"\n\033[90m┌─[\033[32m✓\033[90m]\033[0m")
-                        print(f"\033[90m└─>\033[0m Model changed to: \033[32m{new_model_name}\033[0m")
+                        print(f"Model: {MODELS[model_key]['name']}\n")
                     else:
-                        print(f"\n\033[90m┌─[\033[31m✗\033[90m]\033[0m")
-                        print(f"\033[90m└─>\033[0m \033[31mModel '{model_key}' not found\033[0m")
-                        print(f"\033[90m    Use /models to see available options\033[0m")
+                        print(f"Model '{model_key}' not found\n")
                     continue
                 
-                # CHANGE SYSTEM PROMPT
-                elif cmd == "/system" or cmd == "/sys":
-                    if len(cmd_parts) < 2:
-                        print("\n\033[90m┌─[\033[31m✗\033[90m]\033[0m")
-                        print("\033[90m└─>\033[0m \033[31mUsage: /system <prompt>\033[0m")
-                        print("\033[90m    Example: /system You are a coding expert\033[0m")
-                        continue
-                    chat.set_system_prompt(cmd_parts[1])
-                    print("\n\033[90m┌─[\033[32m✓\033[90m]\033[0m")
-                    print("\033[90m└─>\033[0m \033[90mSystem prompt updated\033[0m")
-                    continue
-                
-                # SHOW HISTORY
-                elif cmd == "/history" or cmd == "/hist":
-                    print("\n\033[90m╔═══════════════════════════════════════════════════════════════════════╗\033[0m")
-                    print("\033[90m║\033[0m  \033[36m📜 Conversation History\033[0m" + " " * 41 + "\033[90m║\033[0m")
-                    print("\033[90m╠═══════════════════════════════════════════════════════════════════════╣\033[0m")
-                    if not conversation_log:
-                        print("\033[90m║\033[0m  \033[90mNo messages yet\033[0m" + " " * 54 + "\033[90m║\033[0m")
-                    else:
-                        for i, msg in enumerate(conversation_log, 1):
-                            role_color = "\033[36m" if msg['role'] == 'user' else "\033[32m"
-                            role_text = "You" if msg['role'] == 'user' else "AI"
-                            content_preview = msg['content'][:50] + "..." if len(msg['content']) > 50 else msg['content']
-                            print(f"\033[90m║\033[0m  {role_color}{i}. {role_text}:\033[0m {content_preview}" + " " * max(0, 60 - len(content_preview)) + "\033[90m║\033[0m")
-                    print("\033[90m╚═══════════════════════════════════════════════════════════════════════╝\033[0m")
-                    continue
-                
-                # SAVE CONVERSATION
-                elif cmd == "/save" or cmd == "/export":
-                    filename = cmd_parts[1] if len(cmd_parts) > 1 else f"fote_chat_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+                elif cmd in ["/save", "/export"]:
+                    filename = cmd_parts[1] if len(cmd_parts) > 1 else f"chat_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
                     try:
                         with open(filename, 'w', encoding='utf-8') as f:
-                            f.write("=" * 70 + "\n")
-                            f.write(f"FOTE CONVERSATION EXPORT\n")
-                            f.write(f"Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-                            f.write(f"Model: {MODELS[chat.model]['name']}\n")
-                            f.write("=" * 70 + "\n\n")
                             for msg in conversation_log:
-                                role = "YOU" if msg['role'] == 'user' else "AI"
-                                f.write(f"[{role}]: {msg['content']}\n\n")
-                        print(f"\n\033[90m┌─[\033[32m✓\033[90m]\033[0m")
-                        print(f"\033[90m└─>\033[0m \033[32mConversation saved to: {filename}\033[0m")
+                                role = "You" if msg['role'] == 'user' else "AI"
+                                f.write(f"{role}: {msg['content']}\n\n")
+                        print(f"Saved: {filename}\n")
                     except Exception as e:
-                        print(f"\n\033[90m┌─[\033[31m✗\033[90m]\033[0m")
-                        print(f"\033[90m└─>\033[0m \033[31mError saving: {str(e)}\033[0m")
+                        print(f"Error: {str(e)}\n")
                     continue
                 
-                # VERSION INFO
-                elif cmd == "/version" or cmd == "/v" or cmd == "/info":
-                    print("\n\033[90m╔═══════════════════════════════════════╗\033[0m")
-                    print("\033[90m║\033[0m  \033[36mFote Version 1.0.0\033[0m            \033[90m║\033[0m")
-                    print("\033[90m║\033[0m  \033[90mBy: 765g\033[0m                       \033[90m║\033[0m")
-                    print("\033[90m║\033[0m  \033[90mPython: " + f"{sys.version.split()[0]}\033[0m" + " " * (21 - len(sys.version.split()[0])) + "\033[90m║\033[0m")
-                    print("\033[90m║\033[0m  \033[90mPlatform: " + f"{platform.system()}\033[0m" + " " * (19 - len(platform.system())) + "\033[90m║\033[0m")
-                    print("\033[90m╚═══════════════════════════════════════╝\033[0m")
-                    continue
-                
-                # STATUS INFO
-                elif cmd == "/status" or cmd == "/stat":
-                    print(f"\n\033[90m╔═══════════════════════════════════════╗\033[0m")
-                    print(f"\033[90m║\033[0m  \033[36mCurrent Status\033[0m                \033[90m║\033[0m")
-                    print(f"\033[90m╠═══════════════════════════════════════╣\033[0m")
-                    print(f"\033[90m║\033[0m  \033[90mModel:\033[0m {MODELS[chat.model]['name'][:25]:<25}\033[90m║\033[0m")
-                    print(f"\033[90m║\033[0m  \033[90mProvider:\033[0m {MODELS[chat.model]['provider']:<23}\033[90m║\033[0m")
-                    print(f"\033[90m║\033[0m  \033[90mCategory:\033[0m {MODELS[chat.model]['category']:<23}\033[90m║\033[0m")
-                    print(f"\033[90m║\033[0m  \033[90mMessages:\033[0m {len(conversation_log):<23}\033[90m║\033[0m")
-                    print(f"\033[90m╚═══════════════════════════════════════╝\033[0m")
-                    continue
-                
-                # RELOAD/REFRESH
-                elif cmd == "/reload" or cmd == "/refresh":
-                    os.system('cls' if os.name == 'nt' else 'clear')
-                    print_banner(MODELS[chat.model]['name'], username, show_instructions=True)
-                    print("\n\033[90m┌─[\033[32m✓\033[90m]\033[0m")
-                    print("\033[90m└─>\033[0m \033[90mScreen refreshed\033[0m")
-                    continue
-                
-                # UNKNOWN COMMAND
                 else:
-                    print(f"\n\033[90m┌─[\033[31m✗\033[90m]\033[0m")
-                    print(f"\033[90m└─>\033[0m \033[31mUnknown command: {cmd}\033[0m")
-                    print(f"\033[90m    Type /help for available commands\033[0m")
+                    print(f"Unknown command: {cmd}")
+                    print("Type /help for commands\n")
                     continue
             
-            # Send message and get response
-            model_name = MODELS[chat.model]['name']
-            provider = MODELS[chat.model]['provider']
-            
-            print(f"\n\033[90m┌─[\033[32m{model_name}\033[90m · {provider}]\033[0m")
-            print(f"\033[90m└─>\033[0m ", end="")
+            # Send message and stream response
             response = chat.chat(user_input, stream=True)
+            print()
             
-            # Log AI response
             if response:
                 conversation_log.append({"role": "assistant", "content": response, "timestamp": datetime.now().isoformat()})
             
         except KeyboardInterrupt:
-            print("\n\n\033[90m╔═══════════════════════════════════════╗\033[0m")
-            print("\033[90m║\033[0m  \033[33m⚠\033[0m  Interrupted by user          \033[90m║\033[0m")
-            print("\033[90m║\033[0m  \033[90mSession terminated\033[0m               \033[90m║\033[0m")
-            print("\033[90m╚═══════════════════════════════════════╝\033[0m\n")
+            print("\n\nBye!")
+            break
+        except EOFError:
+            print("\nBye!")
             break
         except Exception as e:
-            print(f"\n\033[90m┌─[\033[31m✗ Error\033[90m]\033[0m")
-            print(f"\033[90m└─>\033[0m \033[31m{str(e)}\033[0m")
+            print(f"\nError: {str(e)}\n")
 
 
 def main():
@@ -640,9 +455,7 @@ def main():
     
     # SELECT MODEL INTERACTIVELY
     if sys.argv[1] == "-s" or sys.argv[1] == "--select":
-        print("\n\033[36m═══════════════════════════════════════════════════════════════════════\033[0m")
-        print("\033[36m                    SELECT YOUR DEFAULT MODEL\033[0m")
-        print("\033[36m═══════════════════════════════════════════════════════════════════════\033[0m\n")
+        print("\nSelect model:\n")
         
         # Group models by category
         categories = {"Best": [], "Reasoning": [], "Code": [], "General": []}
@@ -655,39 +468,28 @@ def main():
         for category, models in categories.items():
             if not models:
                 continue
-            
-            category_color = {
-                "Best": "\033[35m",
-                "Reasoning": "\033[33m",
-                "Code": "\033[32m",
-                "General": "\033[36m"
-            }.get(category, "\033[37m")
-            
-            print(f"{category_color}▸ {category}\033[0m")
+            print(f"{category}:")
             for key, info in models:
                 model_list.append(key)
-                print(f"  \033[90m[{idx}]\033[0m \033[36m{key:<20}\033[0m {info['name']} \033[90m({info['provider']})\033[0m")
+                print(f"  [{idx}] {key:<20} {info['name']} ({info['provider']})")
                 idx += 1
             print()
         
-        print("\033[90m═══════════════════════════════════════════════════════════════════════\033[0m")
-        
         try:
-            choice = input("\n\033[36mSelect model number (or press Enter for default):\033[0m ").strip()
+            choice = input("Select number (or Enter for default): ").strip()
             
             if choice == "":
-                print("\033[32m✓\033[0m Using default model: \033[33m" + MODELS[chat.model]['name'] + "\033[0m")
+                print(f"Using: {MODELS[chat.model]['name']}\n")
             elif choice.isdigit() and 1 <= int(choice) <= len(model_list):
                 selected_key = model_list[int(choice) - 1]
                 chat.set_model(selected_key)
-                print("\033[32m✓\033[0m Model set to: \033[33m" + MODELS[selected_key]['name'] + "\033[0m")
+                print(f"Model: {MODELS[selected_key]['name']}\n")
             else:
-                print("\033[31m✗\033[0m Invalid selection. Using default model.")
+                print("Invalid selection. Using default.\n")
         except Exception as e:
-            print(f"\033[31m✗\033[0m Error: {str(e)}")
+            print(f"Error: {str(e)}\n")
         
         # Continue to interactive mode
-        print()
         interactive_mode(chat)
         return
     
@@ -698,42 +500,32 @@ def main():
     # Handle model selection
     if sys.argv[1] == "-m" or sys.argv[1] == "--model":
         if len(sys.argv) < 4:
-            print("\n\033[90m┌─[\033[31m✗ Error\033[90m]\033[0m")
-            print("\033[90m└─>\033[0m \033[31mUsage: fote -m <model> \"message\"\033[0m\n")
+            print("\nError: Usage: fote -m <model> \"message\"\n")
             return
         model_key = sys.argv[2]
         if not chat.set_model(model_key):
-            print(f"\n\033[90m┌─[\033[31m✗ Error\033[90m]\033[0m")
-            print(f"\033[90m└─>\033[0m \033[31mModel '{model_key}' not found\033[0m")
-            print(f"\033[90m    Use 'fote -l' to see available models\033[0m\n")
+            print(f"\nError: Model '{model_key}' not found")
+            print("Use 'fote -l' to see available models\n")
             return
         message = sys.argv[3]
     else:
         # Single message mode
         message = sys.argv[1]
     
-    # Quick single message
-    import getpass
+    # Quick single message - minimal output
     import os
-    username = getpass.getuser()
     model_name = MODELS[chat.model]['name']
-    provider = MODELS[chat.model]['provider']
     
     # Clear screen
     os.system('cls' if os.name == 'nt' else 'clear')
     
     # Print banner
-    print_banner(model_name, username, show_instructions=False)
+    print_banner(model_name)
     
     # Show user message
-    cwd = os.getcwd()
-    print(f"\033[90m┌─[\033[36m{cwd}\033[90m]\033[0m")
-    print(f"\033[90m└─>\033[0m \033[36m{username}\033[90m:\033[0m {message}")
+    print(f"> {message}\n")
     
     # Show AI response
-    print(f"\n\033[90m┌─[\033[32m{model_name}\033[90m · {provider}]\033[0m")
-    print(f"\033[90m└─>\033[0m ", end="")
-    
     response = chat.chat(message, stream=True)
     print()
 
