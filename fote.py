@@ -12,6 +12,15 @@ import requests
 from datetime import datetime
 import platform
 
+# Try to import prompt_toolkit for better input
+try:
+    from prompt_toolkit import prompt as pt_prompt
+    from prompt_toolkit.styles import Style
+    from prompt_toolkit.formatted_text import HTML
+    PROMPT_TOOLKIT_AVAILABLE = True
+except ImportError:
+    PROMPT_TOOLKIT_AVAILABLE = False
+
 # NVIDIA API Configuration
 NVIDIA_API_KEY = "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"
 NVIDIA_API_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
@@ -387,6 +396,35 @@ def print_help():
     print()
 
 
+def get_user_input(username, cwd):
+    """Get user input with optional prompt_toolkit"""
+    if PROMPT_TOOLKIT_AVAILABLE:
+        # Beautiful input bar like ChatGPT
+        style = Style.from_dict({
+            'prompt': '#00aa00 bold',
+            'path': '#888888',
+        })
+        
+        message = [
+            ('class:path', f'{cwd}\n'),
+            ('class:prompt', f'💬 {username} > '),
+        ]
+        
+        try:
+            return pt_prompt(
+                message,
+                style=style,
+                multiline=False,
+                prompt_continuation='... '
+            ).strip()
+        except (EOFError, KeyboardInterrupt):
+            return None
+    else:
+        # Fallback to regular input
+        print(f"\n\033[90m┌─[\033[36m{cwd}\033[90m]\033[0m")
+        return input(f"\033[90m└─>\033[0m \033[36m{username}\033[90m:\033[0m ").strip()
+
+
 def interactive_mode(chat):
     """Run interactive chat mode"""
     import getpass
@@ -401,6 +439,11 @@ def interactive_mode(chat):
     # Print banner
     print_banner(model_name, username, show_instructions=True)
     
+    # Show prompt_toolkit status
+    if not PROMPT_TOOLKIT_AVAILABLE:
+        print("\033[33m💡 Tip: Install 'prompt-toolkit' for a better input experience:\033[0m")
+        print("\033[33m   pip install prompt-toolkit\033[0m\n")
+    
     # Conversation history (for save/export)
     conversation_log = []
     
@@ -409,9 +452,16 @@ def interactive_mode(chat):
             # Get current directory for prompt
             cwd = os.getcwd()
             
-            # Styled prompt
-            print(f"\n\033[90m┌─[\033[36m{cwd}\033[90m]\033[0m")
-            user_input = input(f"\033[90m└─>\033[0m \033[36m{username}\033[90m:\033[0m ").strip()
+            # Get user input
+            user_input = get_user_input(username, cwd)
+            
+            # Handle Ctrl+C or Ctrl+D
+            if user_input is None:
+                print("\n\n\033[90m╔═══════════════════════════════════════╗\033[0m")
+                print("\033[90m║\033[0m  \033[33m⚠\033[0m  Interrupted by user          \033[90m║\033[0m")
+                print("\033[90m║\033[0m  \033[90mSession terminated\033[0m               \033[90m║\033[0m")
+                print("\033[90m╚═══════════════════════════════════════╝\033[0m\n")
+                break
             
             if not user_input:
                 continue
