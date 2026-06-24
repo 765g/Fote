@@ -399,30 +399,22 @@ def print_help():
 def get_user_input(username, cwd):
     """Get user input with optional prompt_toolkit"""
     if PROMPT_TOOLKIT_AVAILABLE:
-        # Beautiful input bar like ChatGPT
+        # Simple clean input bar
         style = Style.from_dict({
-            'prompt': '#00aa00 bold',
-            'path': '#888888',
+            'prompt': '#00ff00',  # Green
         })
-        
-        message = [
-            ('class:path', f'{cwd}\n'),
-            ('class:prompt', f'💬 {username} > '),
-        ]
         
         try:
             return pt_prompt(
-                message,
+                HTML(f'<prompt>{username}:</prompt> '),
                 style=style,
-                multiline=False,
-                prompt_continuation='... '
+                multiline=False
             ).strip()
         except (EOFError, KeyboardInterrupt):
             return None
     else:
         # Fallback to regular input
-        print(f"\n\033[90m┌─[\033[36m{cwd}\033[90m]\033[0m")
-        return input(f"\033[90m└─>\033[0m \033[36m{username}\033[90m:\033[0m ").strip()
+        return input(f"\033[32m{username}:\033[0m ").strip()
 
 
 def interactive_mode(chat):
