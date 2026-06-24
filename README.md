@@ -3,7 +3,24 @@
 > A powerful CLI agent powered by NVIDIA NIM API - 100% Free!
 
 **Author:** 765g  
-**Version:** 1.0.0
+**Version:** 1.0.0  
+**Repository:** https://github.com/765g/Fote
+
+---
+
+## ⚡ Instalación de Una Línea
+
+### Windows (PowerShell)
+```powershell
+curl -o "$env:USERPROFILE\fote.py" https://raw.githubusercontent.com/765g/Fote/master/fote.py; python "$env:USERPROFILE\fote.py" -s
+```
+
+### Linux / macOS
+```bash
+curl -o ~/fote.py https://raw.githubusercontent.com/765g/Fote/master/fote.py && python3 ~/fote.py -s
+```
+
+**¡Eso es todo!** Ya puedes usar Fote 🚀
 
 ---
 
