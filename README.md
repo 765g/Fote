@@ -38,17 +38,17 @@
 
 **Windows (PowerShell):**
 ```powershell
-curl -o "$env:USERPROFILE\fote.py" https://raw.githubusercontent.com/765g/Fote/master/fote.py; if (!(Test-Path $PROFILE)) { New-Item -Path $PROFILE -ItemType File -Force }; Add-Content -Path $PROFILE -Value "`nfunction fote { python $env:USERPROFILE\fote.py @args }"; . $PROFILE; fote -s
+curl -o "$env:USERPROFILE\fote.py" https://raw.githubusercontent.com/765g/Fote/master/fote.py; pip install requests prompt-toolkit; if (!(Test-Path $PROFILE)) { New-Item -Path $PROFILE -ItemType File -Force }; Add-Content -Path $PROFILE -Value "`nfunction fote { python $env:USERPROFILE\fote.py @args }"; . $PROFILE; fote -s
 ```
 
 **Linux / macOS:**
 ```bash
-curl -o ~/fote.py https://raw.githubusercontent.com/765g/Fote/master/fote.py && echo "alias fote='python3 ~/fote.py'" >> ~/.bashrc && source ~/.bashrc && fote -s
+curl -o ~/fote.py https://raw.githubusercontent.com/765g/Fote/master/fote.py && pip3 install requests prompt-toolkit && echo "alias fote='python3 ~/fote.py'" >> ~/.bashrc && source ~/.bashrc && fote -s
 ```
 
 **macOS (Zsh):**
 ```bash
-curl -o ~/fote.py https://raw.githubusercontent.com/765g/Fote/master/fote.py && echo "alias fote='python3 ~/fote.py'" >> ~/.zshrc && source ~/.zshrc && fote -s
+curl -o ~/fote.py https://raw.githubusercontent.com/765g/Fote/master/fote.py && pip3 install requests prompt-toolkit && echo "alias fote='python3 ~/fote.py'" >> ~/.zshrc && source ~/.zshrc && fote -s
 ```
 
 After installation, just type `fote` and you're ready! 🎉
